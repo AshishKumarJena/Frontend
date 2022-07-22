@@ -29,6 +29,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     UsermanagementComponent,
     ProductListComponent,
     DialogComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
