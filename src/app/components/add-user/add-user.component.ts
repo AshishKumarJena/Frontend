@@ -19,7 +19,7 @@ export class AddUserComponent implements OnInit {
       password: ['', Validators.required],
       mobile: ['', Validators.required],
       mailId: ['', Validators.required],
-      regdDate: ['', Validators.required],
+      registrationDate: ['', Validators.required],
     })
   }
     addUser() {
