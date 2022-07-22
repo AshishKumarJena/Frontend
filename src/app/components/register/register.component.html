@@ -1,0 +1,77 @@
+<div class="bootstrap-wrapper">
+  <div class="container mt">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="container text-center">
+          <img
+            class="img-fluid"
+            style="width: 100px"
+            src="/assets/logo.png"
+            alt=""
+          />
+        </div>
+        <h1 class="text-center">Please fill in this form to create an account.</h1>
+
+        <!-- creating form-->
+        <form (ngSubmit)="onSubmit()">
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="user.name"
+              matInput
+              placeholder="Username"
+              type="email"
+              name="email"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="user.password"
+              matInput
+              placeholder="Password"
+              type="password"
+              name="password"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="user.mailId"
+              matInput
+              placeholder="Email"
+              type="text"
+              name="mailId"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="user.mobile"
+              matInput
+              placeholder="Mobile Number"
+              type="text"
+              name="mobNo"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="user.regDate"
+              matInput
+              placeholder="Date"
+              type="date"
+              name="date"
+              required
+            />
+          </mat-form-field>
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary">
+              Register
+            </button>
+          </div>
+        </form>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="bootstrap-wrapper">
+  <div class="container mt">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="container text-center">
+          <img
+            class="img-fluid"
+            style="width: 100px"
+            src="/assets/logo.png"
+            alt=""
+          />
+        </div>
+        <h1 class="text-center">Login here !!</h1>
+
+        <!-- creating form-->
+        <form (ngSubmit)="login()">
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="userName"
+              matInput
+              placeholder="Username"
+              type="email"
+              name="email"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <input
+              [(ngModel)]="password"
+              matInput
+              placeholder="Password"
+              type="password"
+              name="password"
+              required
+            />
+          </mat-form-field>
+          <div class="container text-center">
+            <button type="submit" mat-raised-button color="primary">
+              Login
+            </button>
+            <button style="margin-left: 10px" type="reset" mat-raised-button color="primary">
+              Reset
+            </button>
+          </div>
+        </form>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
