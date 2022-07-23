@@ -29,21 +29,20 @@ export class UsermanagementService {
   constructor(private http:HttpClient,private route:Router) { }
 
 postUser (data : AppUser): Observable<AppUser[]>{
- return this.http.post<AppUser[]>("http://localhost:9095/user/",data);
+ return this.http.post<AppUser[]>("http://localhost:9095/user/",data)
 }
 
-getAllUsers(){
-  return this.http.get<AppUser[]>('http://localhost:9095/user/',{headers:this.createHeader()})}
-  
+getUser(){
+  return this.http.get<AppUser[]>('http://localhost:9095/user/')
+}
 
- createHeader(){
-    let token= sessionStorage.getItem('token')
-    if(token!==null){
-      var header=new HttpHeaders({Authorization:token})
-      return header
-    }
-    //this.router.navigate(['login'])
-    return 
-  }
+putUser(data : AppUser, id : number): Observable<AppUser[]>{
+  return this.http.put<AppUser[]>("http://localhost:9095/user/"+id,data)
+}
+
+deleteUser(id : number){
+  return this.http.delete<AppUser[]>("http://localhost:9095/user/"+id)
+}
 
 }
+

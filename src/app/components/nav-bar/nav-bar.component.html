@@ -1,28 +1,38 @@
 <mat-toolbar color="primary">
   <span>
-    <mat-icon>eco</mat-icon>
-    <a mat-button routerLink="/">Service Booking System</a>
+    <mat-icon *ngIf="loggedIn">eco</mat-icon>
+    <a mat-button routerLink="/dashboard" *ngIf="loggedIn"
+      >Service Booking System</a
+    >
+    <mat-icon *ngIf="!loggedIn">eco</mat-icon>
+    <a mat-button routerLink="/" *ngIf="!loggedIn">Service Booking System</a>
   </span>
   <div class="example-spacer"></div>
-  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowUser">User Management</button>
+  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowUser">
+    User Management
+  </button>
   <mat-menu #belowUser="matMenu" yPosition="below">
-    <button mat-menu-item>Add User</button>
-    <button mat-menu-item>Update User</button>
-    <button mat-menu-item>List User</button>
+    <button mat-menu-item (click)="listUser()">List User</button>
+    <button mat-menu-item (click)="addUser()">Add User</button>
   </mat-menu>
-  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowProduct">Product Management</button>
+  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowProduct">
+    Product Management
+  </button>
   <mat-menu #belowProduct="matMenu" yPosition="below">
-    <button mat-menu-item>Add Product</button>
-    <button mat-menu-item>Update Product</button>
-    <button mat-menu-item>List Product</button>
+    <button mat-menu-item (click)="listProduct()">List Product</button>
+    <button mat-menu-item (click)="addProduct()">Add Product</button>
   </mat-menu>
-  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowService">Service Management</button>
+  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowService">
+    Service Management
+  </button>
   <mat-menu #belowService="matMenu" yPosition="below">
-    <button mat-menu-item>Create Service</button>
+    <button mat-menu-item routerLink="/servicemanagement">
+      Create Service
+    </button>
     <button mat-menu-item>Edit Service</button>
     <button mat-menu-item>Service Reports</button>
   </mat-menu>
-  
+
   <a mat-raised-button color="accent" *ngIf="!loggedIn" routerLink="/login"
     >Login</a
   >

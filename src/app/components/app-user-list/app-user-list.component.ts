@@ -21,7 +21,7 @@ export class AppUserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listuser.getAllUsers().subscribe(reponce=>{
+    this.listuser.getUser().subscribe(reponce=>{
       this.user.push(...reponce)},error=>this.handleError(error))
   }
   AuthError:boolean=false

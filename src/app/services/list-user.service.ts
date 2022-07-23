@@ -23,7 +23,7 @@ export class ListUserService {
   baseURL: string = "http://localhost:9095/";
 
   constructor(private http:HttpClient ,private router :Router) { }
-  getAllUsers(){return this.http.get<AppUser[]>(this.baseURL + 'user',{headers:this.createHeader()})}
+  getUser(){return this.http.get<AppUser[]>(this.baseURL + 'user',{headers:this.createHeader()})}
   createHeader(){
     let token= localStorage.getItem('token')
     if(token!==null){

@@ -33,6 +33,10 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+
+
 
 
 
@@ -71,7 +75,11 @@ import {MatTableModule} from '@angular/material/table';
     FormsModule,
     MatTabsModule,
     MatMenuModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    RouterModule,
+    
     //RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthenticationService, AuthGuard],
