@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { IAppUser } from './appuser';
 
+
 export class AppUser implements IAppUser {
     id : number;
     name: string;

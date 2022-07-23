@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsermanagementService } from 'src/app/services/usermanagement.service';
-
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
@@ -10,7 +10,7 @@ import { UsermanagementService } from 'src/app/services/usermanagement.service';
 export class AddUserComponent implements OnInit {
 
   userForm !: FormGroup;
-  constructor(private formBuilder: FormBuilder, private api: UsermanagementService) { }
+  constructor(private formBuilder: FormBuilder, private api: UsermanagementService, private dialogRef : MatDialogRef<AddUserComponent>) { }
 
   ngOnInit(): void {
       this.userForm = this.formBuilder.group({
@@ -28,6 +28,8 @@ export class AddUserComponent implements OnInit {
       .subscribe({
         next:(res) => {
           alert("User added successfully")
+          this.userForm.reset();
+          this.dialogRef.close('save');
         },
         error:()=>{
           alert("Error while adding the user")

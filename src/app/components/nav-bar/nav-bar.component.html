@@ -1,7 +1,32 @@
 <mat-toolbar color="primary">
-  <span><a mat-icon-button routerLink="/">Service Booking System</a></span>
-  <span class="example-spacer"></span>
-  <a mat-icon-button *ngIf="!loggedIn" routerLink="/login">Login</a>
-  <a mat-icon-button *ngIf="loggedIn" routerLink="/login">User</a>
-  <a mat-icon-button *ngIf="loggedIn" (click)="logoutUser()">Logout</a>
+  <span>
+    <mat-icon>eco</mat-icon>
+    <a mat-button routerLink="/">Service Booking System</a>
+  </span>
+  <div class="example-spacer"></div>
+  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowUser">User Management</button>
+  <mat-menu #belowUser="matMenu" yPosition="below">
+    <button mat-menu-item>Add User</button>
+    <button mat-menu-item>Update User</button>
+    <button mat-menu-item>List User</button>
+  </mat-menu>
+  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowProduct">Product Management</button>
+  <mat-menu #belowProduct="matMenu" yPosition="below">
+    <button mat-menu-item>Add Product</button>
+    <button mat-menu-item>Update Product</button>
+    <button mat-menu-item>List Product</button>
+  </mat-menu>
+  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowService">Service Management</button>
+  <mat-menu #belowService="matMenu" yPosition="below">
+    <button mat-menu-item>Create Service</button>
+    <button mat-menu-item>Edit Service</button>
+    <button mat-menu-item>Service Reports</button>
+  </mat-menu>
+  
+  <a mat-raised-button color="accent" *ngIf="!loggedIn" routerLink="/login"
+    >Login</a
+  >
+  <a mat-raised-button color="accent" *ngIf="loggedIn" (click)="logoutUser()"
+    >Logout</a
+  >
 </mat-toolbar>
