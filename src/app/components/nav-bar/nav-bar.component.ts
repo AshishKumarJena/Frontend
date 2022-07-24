@@ -5,6 +5,7 @@ import { AddUserComponent } from '../add-user/add-user.component';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { DialogComponent } from '../dialog/dialog.component';
+import { ServiceBookingDialogComponent } from '../service-booking-dialog/service-booking-dialog.component';
 
 @Component({
   selector: 'app-nav-bar',
@@ -39,8 +40,8 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['productmanagement']);
   }
 
-  addBooking() {
-    this.dialog.open(DialogComponent, {
+  addServiceBooking() {
+    this.dialog.open(ServiceBookingDialogComponent, {
       width: '30%',
     });
   }

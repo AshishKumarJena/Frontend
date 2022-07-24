@@ -35,10 +35,11 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-import { ServiceRequestComponent } from './components/service-request/service-request.component';
-import { ServiceRequestDialogComponent } from './components/service-request-dialog/service-request-dialog.component';
-import { ServiceRequestReportComponent } from './components/service-request-report/service-request-report.component';
-import { ServiceRequestReportDialogComponent } from './components/service-request-report-dialog/service-request-report-dialog.component';
+import { ServiceBookingComponent } from './components/service-booking/service-booking.component';
+import { ServiceBookingDialogComponent } from './components/service-booking-dialog/service-booking-dialog.component';
+import { ServiceReportComponent } from './components/service-report/service-report.component';
+import { ServiceReportDialogComponent } from './components/service-report-dialog/service-report-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -60,10 +61,10 @@ import { ServiceRequestReportDialogComponent } from './components/service-reques
     ProductListComponent,
     DialogComponent,
     AddUserComponent,
-    ServiceRequestComponent,
-    ServiceRequestDialogComponent,
-    ServiceRequestReportComponent,
-    ServiceRequestReportDialogComponent,
+    ServiceBookingComponent,
+    ServiceBookingDialogComponent,
+    ServiceReportComponent,
+    ServiceReportDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +88,7 @@ import { ServiceRequestReportDialogComponent } from './components/service-reques
     MatPaginatorModule,
     MatSortModule,
     RouterModule,
-    
+    MatSelectModule
     //RouterModule.forRoot(appRoutes)
   ],
   providers: [AuthenticationService, AuthGuard],

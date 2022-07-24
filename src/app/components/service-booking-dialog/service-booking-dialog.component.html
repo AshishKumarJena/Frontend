@@ -1,0 +1,45 @@
+<h1 mat-dialog-title>Service Booking Form</h1>
+<div mat-dialog-content>
+  <form [formGroup]="serviceBookingForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Product ID</mat-label>
+      <input formControlName="productId" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>User ID</mat-label>
+      <input formControlName="userId" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Requested Date</mat-label>
+      <input formControlName="reqDate" matInput [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Problem</mat-label>
+      <textarea formControlName="problem" matInput></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea formControlName="description" matInput></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status" placeholder="Category">
+        <mat-option value="pending">
+            pending
+        </mat-option>
+        <mat-option value="resolved">
+            resolved
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button style="margin-left: 8px" mat-raised-button color="primary" (click)="addServiceBooking()">
+    {{actionBtn}}
+  </button>
+</div>

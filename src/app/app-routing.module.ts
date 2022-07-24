@@ -9,7 +9,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ServicebookComponent } from './components/servicebook/servicebook.component';
 import { UsermanagementComponent } from './components/usermanagement/usermanagement.component';
 import { AuthGuard } from './services/auth.guard';
-
+import { ServiceBookingComponent } from './components/service-booking/service-booking.component';
 
 const routes: Routes = [
   {
@@ -52,7 +52,13 @@ const routes: Routes = [
     path:'product-list',
     component:ProductListComponent,
     pathMatch:'full'
+  },
+  {
+    path:'service-booking',
+    component:ServiceBookingComponent,
+    pathMatch:'full'
   }
+
 ];
 
 @NgModule({

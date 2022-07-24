@@ -38,7 +38,9 @@ export class AddUserComponent implements OnInit {
     }
   }
     
-    addUser() {
+
+
+  addUser() {
     if(!this.editUser){
       if(this.userForm.valid){
     this.api.postUser(this.userForm.value)
@@ -46,7 +48,7 @@ export class AddUserComponent implements OnInit {
         next:(res) => {
           alert("User added successfully")
           this.userForm.reset();
-          this.dialogRef.close('save');
+          this.dialogRef.close('Save');
         },
         error:()=>{
           alert("Error while adding the user")

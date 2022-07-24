@@ -26,8 +26,8 @@
     Service Bookings
   </button>
   <mat-menu #belowBooking="matMenu" yPosition="below">
-    <button mat-menu-item >List Booking</button>
-    <button mat-menu-item >Add Booking</button>
+    <button mat-menu-item (click)="listBooking()">List Booking</button>
+    <button mat-menu-item (click)="addServiceBooking()">Add Booking</button>
   </mat-menu>
   <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowReport">
     Service Reports

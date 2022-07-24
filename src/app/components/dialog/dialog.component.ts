@@ -46,7 +46,7 @@ export class DialogComponent implements OnInit {
         next:(res) => {
           alert("Product added successfully")
           this.productForm.reset();
-          this.dialogRef.close('save');
+          this.dialogRef.close('Save');
         },
         error:()=>{
           alert("Error while adding the product")
