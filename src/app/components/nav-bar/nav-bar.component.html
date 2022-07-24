@@ -22,7 +22,21 @@
     <button mat-menu-item (click)="listProduct()">List Product</button>
     <button mat-menu-item (click)="addProduct()">Add Product</button>
   </mat-menu>
-  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowService">
+  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowBooking">
+    Service Bookings
+  </button>
+  <mat-menu #belowBooking="matMenu" yPosition="below">
+    <button mat-menu-item >List Booking</button>
+    <button mat-menu-item >Add Booking</button>
+  </mat-menu>
+  <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowReport">
+    Service Reports
+  </button>
+  <mat-menu #belowReport="matMenu" yPosition="below">
+    <button mat-menu-item >List Report</button>
+    <button mat-menu-item >Add Report</button>
+  </mat-menu>
+  <!-- <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowService">
     Service Management
   </button>
   <mat-menu #belowService="matMenu" yPosition="below">
@@ -31,7 +45,7 @@
     </button>
     <button mat-menu-item>Edit Service</button>
     <button mat-menu-item>Service Reports</button>
-  </mat-menu>
+  </mat-menu> -->
 
   <a mat-raised-button color="accent" *ngIf="!loggedIn" routerLink="/login"
     >Login</a

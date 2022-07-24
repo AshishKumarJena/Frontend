@@ -35,6 +35,10 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
+import { ServiceRequestComponent } from './components/service-request/service-request.component';
+import { ServiceRequestDialogComponent } from './components/service-request-dialog/service-request-dialog.component';
+import { ServiceRequestReportComponent } from './components/service-request-report/service-request-report.component';
+import { ServiceRequestReportDialogComponent } from './components/service-request-report-dialog/service-request-report-dialog.component';
 
 
 
@@ -56,6 +60,10 @@ import {MatSortModule} from '@angular/material/sort';
     ProductListComponent,
     DialogComponent,
     AddUserComponent,
+    ServiceRequestComponent,
+    ServiceRequestDialogComponent,
+    ServiceRequestReportComponent,
+    ServiceRequestReportDialogComponent,
   ],
   imports: [
     BrowserModule,

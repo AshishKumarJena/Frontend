@@ -39,6 +39,27 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['productmanagement']);
   }
 
+  addBooking() {
+    this.dialog.open(DialogComponent, {
+      width: '30%',
+    });
+  }
+
+  listBooking() {
+    this.router.navigate(['service-booking']);
+  }
+
+  addReport() {
+    this.dialog.open(DialogComponent, {
+      width: '30%',
+    });
+  }
+
+  listReport() {
+    this.router.navigate(['service-report']);
+  }
+  
+
     ngOnInit(): void {
     this.loggedIn=this.authenticationService.isUserLoggedIn()
   }
