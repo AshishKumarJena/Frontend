@@ -14,7 +14,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class ProductmanagementComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','name', 'make', 'model', 'cost', 'createdDate'];
+  displayedColumns: string[] = ['id','name', 'make', 'model', 'cost', 'createdDate', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -23,16 +23,19 @@ export class ProductmanagementComponent implements OnInit {
 
   constructor(private dialog:MatDialog, private router:Router, private api : ProductmanagementService ) { }
 
-  openProduct() {
-    this.dialog.open(DialogComponent, {
-      width: '30%',
-    });
-    this.router.navigate(['/productmanagement']);
-  }
-
   ngOnInit(): void {
     this.getAllProducts();
   }
+
+  openProduct() {
+    this.dialog.open(DialogComponent, {
+      width: '30%',
+    }).afterClosed().subscribe(val => {
+      if(val === 'Save') {
+        this.getAllProducts();
+      }
+    })
+  }    
 
   getAllProducts() {
     this.api.getProduct()
@@ -43,11 +46,35 @@ export class ProductmanagementComponent implements OnInit {
           this.dataSource.sort = this.sort;
         },
         error: () => {
-          alert("Error while fetching the users");
+          alert("Error while fetching the products");
         }
       })
     }
-  applyFilter(event: Event) {
+
+    editProduct(row : any) {
+    this.dialog.open(DialogComponent, {
+      width: '30%',
+      data:row
+    }).afterClosed().subscribe(val => {
+      if(val === 'Update') {
+        this.getAllProducts();
+      }
+    })
+  }
+  
+  removeProduct(id : number) {
+    this.api.deleteProduct(id)
+      .subscribe({
+        next: (res) => {
+          alert("Product deleted successfully");
+          this.getAllProducts();
+        },
+        error: () => {
+          alert("Error while deleting the product");
+        }
+      })
+  }
+    applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 

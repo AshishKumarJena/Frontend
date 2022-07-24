@@ -33,16 +33,15 @@ export class ProductmanagementService {
   }
 
   getProduct(){
-    return this.http.get<Product[]>("http://localhost:9000/product/",{headers:this.createHeader()})}
-  
-
-  createHeader(){
-    let token= sessionStorage.getItem('token')
-    if(token!==null){
-      var header=new HttpHeaders({Authorization:token})
-      return header
-    }
-    //this.router.navigate(['productmanagement'])
-    return 
+    return this.http.get<Product[]>("http://localhost:9000/product/")
   }
+
+  putProduct(data : Product, id : number): Observable<Product[]>{
+    return this.http.put<Product[]>("http://localhost:9000/product/"+id,data)
+  }
+  
+  deleteProduct(id : number){
+  return this.http.delete<Product[]>("http://localhost:9000/product/"+id)
+}
+
 }

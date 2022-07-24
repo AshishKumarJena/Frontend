@@ -2,13 +2,14 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsermanagementService } from 'src/app/services/usermanagement.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
-
+  
   userForm !: FormGroup;
   actionBtn : string = 'Save'
   constructor(private formBuilder: FormBuilder, 
@@ -62,12 +63,11 @@ export class AddUserComponent implements OnInit {
       next:(res) => {
         alert("User updated successfully")
         this.userForm.reset();
-        this.dialogRef.close('update');
+        this.dialogRef.close('Update');
       },
       error:()=>{
         alert("Error while updating the record")
       }
     })
   }
-
 }

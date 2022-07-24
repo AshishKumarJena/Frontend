@@ -23,18 +23,21 @@ export class UsermanagementComponent implements OnInit {
 
   constructor(private dialog:MatDialog, private router:Router, private api : UsermanagementService ) { }
 
+  ngOnInit(): void {
+    this.getAllUser();
+  }
+
   openUser() {
     this.dialog.open(AddUserComponent, {
       width: '30%',
-    });
-    this.router.navigate(['/usermanagement']);
+    }).afterClosed().subscribe(val => {
+      if(val === 'Save') {
+        this.getAllUser();
+      }
+    })
   }
 
-  ngOnInit(): void {
-    this.getUser();
-  }
-
-  getUser() {
+  getAllUser() {
     this.api.getUser()
       .subscribe({
         next: (res) => {
@@ -52,8 +55,26 @@ export class UsermanagementComponent implements OnInit {
     this.dialog.open(AddUserComponent, {
       width: '30%',
       data:row
+    }).afterClosed().subscribe(val => {
+      if(val === 'Update') {
+        this.getAllUser();
+      }
     })
   }
+
+  removeUser(id : number) {
+    this.api.deleteUser(id)
+      .subscribe({
+        next: (res) => {
+          alert("User deleted successfully");
+          this.getAllUser();
+        },
+        error: () => {
+          alert("Error while deleting the user");
+        }
+      })
+  }
+  
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
