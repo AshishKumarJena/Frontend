@@ -1,1 +1,67 @@
-<p>service-report-dialog works!</p>
+<h1 mat-dialog-title>Service Booking Form</h1>
+<div mat-dialog-content>
+  <form [formGroup]="serviceReportForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Report ID</mat-label>
+      <input formControlName="reportId" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Service Request ID</mat-label>
+      <input formControlName="serReqId" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Report Date</mat-label>
+      <input formControlName="reportDate" matInput [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Service Type</mat-label>
+    <mat-select formControlName="serviceType" placeholder="Category">
+        <mat-option value="general">
+            general
+        </mat-option>
+        <mat-option value="repair">
+            repair
+        </mat-option>
+        <mat-option value="support">
+            support
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Action Taken</mat-label>
+      <input formControlName="actionTaken" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Diagnosis Details</mat-label>
+      <textarea formControlName="diagnosisDetails" matInput></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Payment Status</mat-label>
+    <mat-select formControlName="isPaid" placeholder="Category">
+        <mat-option value="paid">
+            paid
+        </mat-option>
+        <mat-option value="not paid">
+            not paid
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Visit Fees</mat-label>
+      <input formControlName="visitFees" matInput placeholder="Placeholder" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Repair Details</mat-label>
+      <textarea formControlName="repairDetails" matInput></textarea>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-action [align]="'end'">
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+  <button style="margin-left: 8px" mat-raised-button color="primary" (click)="addServiceReport()">
+    {{actionBtn}}
+  </button>
+</div>

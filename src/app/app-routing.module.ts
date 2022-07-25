@@ -10,6 +10,7 @@ import { ServicebookComponent } from './components/servicebook/servicebook.compo
 import { UsermanagementComponent } from './components/usermanagement/usermanagement.component';
 import { AuthGuard } from './services/auth.guard';
 import { ServiceBookingComponent } from './components/service-booking/service-booking.component';
+import { ServiceReportComponent } from './components/service-report/service-report.component';
 
 const routes: Routes = [
   {
@@ -57,7 +58,13 @@ const routes: Routes = [
     path:'service-booking',
     component:ServiceBookingComponent,
     pathMatch:'full'
+  },
+  {
+    path:'service-report',
+    component:ServiceReportComponent,
+    pathMatch:'full'
   }
+
 
 ];
 

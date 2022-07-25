@@ -33,8 +33,8 @@
     Service Reports
   </button>
   <mat-menu #belowReport="matMenu" yPosition="below">
-    <button mat-menu-item >List Report</button>
-    <button mat-menu-item >Add Report</button>
+    <button mat-menu-item (click)="listReport()">List Report</button>
+    <button mat-menu-item (click)="addServiceReport()">Add Report</button>
   </mat-menu>
   <!-- <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowService">
     Service Management
