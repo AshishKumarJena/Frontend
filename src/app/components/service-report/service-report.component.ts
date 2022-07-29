@@ -14,7 +14,7 @@ import { ServiceReportDialogComponent } from '../service-report-dialog/service-r
 })
 export class ServiceReportComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','reportId', 'serReqId', 'reportDate', 'serviceType', 'actionTaken', 'diagnosisDetails', 'isPaid', 'visitFees', 'repairDetails','action'];
+  displayedColumns: string[] = ['reportId', 'serReqId', 'reportDate', 'serviceType', 'actionTaken', 'diagnosisDetails', 'isPaid', 'visitFees', 'repairDetails','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

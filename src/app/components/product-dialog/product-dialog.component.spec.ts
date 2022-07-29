@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AppUserListComponent } from './app-user-list.component';
+import { ProductDialogComponent } from './product-dialog.component';
 
-describe('AppUserListComponent', () => {
-  let component: AppUserListComponent;
-  let fixture: ComponentFixture<AppUserListComponent>;
+describe('ProductDialogComponent', () => {
+  let component: ProductDialogComponent;
+  let fixture: ComponentFixture<ProductDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AppUserListComponent ]
+      declarations: [ ProductDialogComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AppUserListComponent);
+    fixture = TestBed.createComponent(ProductDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

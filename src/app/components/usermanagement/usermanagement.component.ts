@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UsermanagementService } from 'src/app/services/usermanagement.service';
-import { AddUserComponent } from '../add-user/add-user.component';
+import { UserDialogComponent } from '../user-dialog/user-dialog.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -28,7 +28,7 @@ export class UsermanagementComponent implements OnInit {
   }
 
   openUser() {
-    this.dialog.open(AddUserComponent, {
+    this.dialog.open(UserDialogComponent, {
       width: '30%',
     }).afterClosed().subscribe(val => {
       if(val === 'Save') {
@@ -52,7 +52,7 @@ export class UsermanagementComponent implements OnInit {
     }
 
   editUser(row : any) {
-    this.dialog.open(AddUserComponent, {
+    this.dialog.open(UserDialogComponent, {
       width: '30%',
       data:row
     }).afterClosed().subscribe(val => {

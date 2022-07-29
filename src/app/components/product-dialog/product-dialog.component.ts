@@ -4,18 +4,18 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductmanagementService } from 'src/app/services/productmanagement.service';
 
 @Component({
-  selector: 'app-dialog',
-  templateUrl: './dialog.component.html',
-  styleUrls: ['./dialog.component.css']
+  selector: 'product-dialog',
+  templateUrl: './product-dialog.component.html',
+  styleUrls: ['./product-dialog.component.css']
 })
-export class DialogComponent implements OnInit {
+export class ProductDialogComponent implements OnInit {
 
   productForm !: FormGroup;
   actionBtn : string = 'Save'
   constructor(private formBuilder: FormBuilder, 
     private api: ProductmanagementService,
     @Inject(MAT_DIALOG_DATA) public editProduct: any, 
-    private dialogRef : MatDialogRef<DialogComponent>) { }
+    private dialogRef : MatDialogRef<ProductDialogComponent>) { }
 
   ngOnInit(): void {
     this.productForm = this.formBuilder.group({
@@ -47,6 +47,7 @@ export class DialogComponent implements OnInit {
           alert("Product added successfully")
           this.productForm.reset();
           this.dialogRef.close('Save');
+          window.location.reload();
         },
         error:()=>{
           alert("Error while adding the product")
@@ -64,6 +65,7 @@ export class DialogComponent implements OnInit {
         alert("Product updated successfully")
         this.productForm.reset();
         this.dialogRef.close('Update');
+        window.location.reload();
       },
       error:()=>{
         alert("Error while updating the record")

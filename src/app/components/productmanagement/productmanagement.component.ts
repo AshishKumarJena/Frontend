@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProductmanagementService } from 'src/app/services/productmanagement.service';
-import { DialogComponent } from '../dialog/dialog.component';
+import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 
 @Component({
   selector: 'app-productmanagement',
@@ -28,7 +28,7 @@ export class ProductmanagementComponent implements OnInit {
   }
 
   openProduct() {
-    this.dialog.open(DialogComponent, {
+    this.dialog.open(ProductDialogComponent, {
       width: '30%',
     }).afterClosed().subscribe(val => {
       if(val === 'Save') {
@@ -52,7 +52,7 @@ export class ProductmanagementComponent implements OnInit {
     }
 
     editProduct(row : any) {
-    this.dialog.open(DialogComponent, {
+    this.dialog.open(ProductDialogComponent, {
       width: '30%',
       data:row
     }).afterClosed().subscribe(val => {

@@ -50,6 +50,7 @@ export class ServiceBookingDialogComponent implements OnInit {
           alert("Service Booking added successfully")
           this.serviceBookingForm.reset();
           this.dialogRef.close('Save');
+          window.location.reload();
         },
         error:()=>{
           alert("Error while adding the service booking")
@@ -67,6 +68,7 @@ export class ServiceBookingDialogComponent implements OnInit {
           alert("Service Booking updated successfully")
           this.serviceBookingForm.reset();
           this.dialogRef.close('Update');
+          window.location.reload();
         },
         error:()=>{
           alert("Error while updating the service booking")

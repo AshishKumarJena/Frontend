@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { UsermanagementService } from 'src/app/services/usermanagement.service';
-import { AddUserComponent } from '../add-user/add-user.component';
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserDialogComponent } from '../user-dialog/user-dialog.component';
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { DialogComponent } from '../dialog/dialog.component';
+import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
 import { ServiceBookingDialogComponent } from '../service-booking-dialog/service-booking-dialog.component';
 import { ServiceReportDialogComponent } from '../service-report-dialog/service-report-dialog.component';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -16,58 +16,88 @@ import { ServiceReportDialogComponent } from '../service-report-dialog/service-r
 
 export class NavBarComponent implements OnInit {
 
-  public loggedIn = false;
-
-  constructor(private authenticationService:AuthenticationService, private router:Router, private dialog:MatDialog, private api : UsermanagementService ) { }
+  constructor(private authService:AuthService, 
+    private router:Router, private dialog:MatDialog, 
+    private tokenStorageService: TokenStorageService, 
+    private route: Router) { }
 
   addUser() {
-    this.dialog.open(AddUserComponent, {
+    this.router.navigate(['usermanagement']);
+    this.dialog.open(UserDialogComponent, {
       width: '30%',
     });
   }
 
 
   listUser() {
-    this.router.navigate(['usermanagement']);
+    this.router.navigate(['usermanagement'])
+    .then(() => {
+          window.location.reload();
+    });
   }
 
    addProduct() {
-    this.dialog.open(DialogComponent, {
+    this.router.navigate(['productmanagement']);
+    this.dialog.open(ProductDialogComponent, {
       width: '30%',
     });
   }
 
   listProduct() {
-    this.router.navigate(['productmanagement']);
+    this.router.navigate(['productmanagement'])
+    .then(() => {
+          window.location.reload();
+    });
   }
 
   addServiceBooking() {
+    this.router.navigate(['service-booking']);
     this.dialog.open(ServiceBookingDialogComponent, {
       width: '30%',
     });
   }
 
   listBooking() {
-    this.router.navigate(['service-booking']);
+    this.router.navigate(['service-booking'])
+    .then(() => {
+          window.location.reload();
+    });
   }
 
   addServiceReport() {
+    this.router.navigate(['service-report']);
     this.dialog.open(ServiceReportDialogComponent, {
       width: '30%',
     });
   }
 
   listReport() {
-    this.router.navigate(['service-report']);
+    this.router.navigate(['service-report'])
+    .then(() => {
+          window.location.reload();
+    });
   }
   
+  private roles: string[] = [];
+  loggedIn = false;
+  username?: string;
 
     ngOnInit(): void {
-    this.loggedIn=this.authenticationService.isUserLoggedIn()
+    this.loggedIn = !!this.tokenStorageService.getToken();
+    if (this.loggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+      // this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      // this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+      this.username = user.username;
+    }
   }
 
-  logoutUser(){
-    this.authenticationService.logOut()
-    location.reload()
-  } 
+  logout(): void {
+    this.tokenStorageService.signOut();
+    this.route.navigate(['login'])
+    .then(() => {
+          window.location.reload();
+    });
+  }
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { IServiceBooking } from './servicebooking';
 import { IServiceReport } from './servicereport';
+import { URLs } from '../_shared/urls';
 
 export class ServiceBooking implements IServiceBooking {
     id: number;
@@ -55,37 +56,39 @@ export class ServiceReport implements IServiceReport {
 })
 export class ServicemanagementService {
 
+
+
   constructor(private http:HttpClient, private router :Router) { }
 
   postServiceBooking(data : ServiceBooking): Observable<ServiceBooking[]>{
-    return this.http.post<ServiceBooking[]>("http://localhost:9090/servicereq/",data);
+    return this.http.post<ServiceBooking[]>(URLs.SERVICE_BOOKING_API_BASE_URL,data);
   }
 
   getServiceBooking(){
-    return this.http.get<ServiceBooking[]>("http://localhost:9090/servicereq/")
+    return this.http.get<ServiceBooking[]>(URLs.SERVICE_BOOKING_API_BASE_URL)
   }
 
   putServiceBooking(data : ServiceBooking, id : number): Observable<ServiceBooking[]>{
-    return this.http.put<ServiceBooking[]>("http://localhost:9090/servicereq/"+id,data)
+    return this.http.put<ServiceBooking[]>(URLs.SERVICE_BOOKING_API_BASE_URL+id,data)
   }
 
   deleteServiceBooking(id : number){
-  return this.http.delete<ServiceBooking[]>("http://localhost:9090/servicereq/"+id)
+  return this.http.delete<ServiceBooking[]>(URLs.SERVICE_BOOKING_API_BASE_URL+id)
   }
 
   postServiceReport(data : ServiceReport): Observable<ServiceReport[]>{
-    return this.http.post<ServiceReport[]>("http://localhost:9090/servicereq/report/",data);
+    return this.http.post<ServiceReport[]>(URLs.SERVICE_REPORT_API_BASE_URL,data);
   }
 
   getServiceReport(){
-    return this.http.get<ServiceReport[]>("http://localhost:9090/servicereq/report/")
+    return this.http.get<ServiceReport[]>(URLs.SERVICE_REPORT_API_BASE_URL)
   }
 
   putServiceReport(data : ServiceReport, id : number): Observable<ServiceReport[]>{
-    return this.http.put<ServiceReport[]>("http://localhost:9090/servicereq/report/"+id,data)
+    return this.http.put<ServiceReport[]>(URLs.SERVICE_REPORT_API_BASE_URL+id,data)
   }
 
   deleteServiceReport(id : number){
-  return this.http.delete<ServiceReport[]>("http://localhost:9090/servicereq/report/"+id)
+  return this.http.delete<ServiceReport[]>(URLs.SERVICE_REPORT_API_BASE_URL+id)
   }
 }

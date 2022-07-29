@@ -14,7 +14,7 @@ import { ServiceBookingDialogComponent } from '../service-booking-dialog/service
 })
 export class ServiceBookingComponent implements OnInit {
 
-  displayedColumns: string[] = ['id','productId', 'userId', 'reqDate', 'problem', 'description', 'status', 'action'];
+  displayedColumns: string[] = ['productId', 'userId', 'reqDate', 'problem', 'description', 'status', 'action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

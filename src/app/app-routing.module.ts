@@ -3,12 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductmanagementComponent } from './components/productmanagement/productmanagement.component';
-import { RegisterComponent } from './components/register/register.component';
 import { ServicebookComponent } from './components/servicebook/servicebook.component';
 import { UsermanagementComponent } from './components/usermanagement/usermanagement.component';
-import { AuthGuard } from './services/auth.guard';
 import { ServiceBookingComponent } from './components/service-booking/service-booking.component';
 import { ServiceReportComponent } from './components/service-report/service-report.component';
 
@@ -26,12 +23,6 @@ const routes: Routes = [
   {
     path:'dashboard',
     component:DashboardComponent,
-    pathMatch:'full',
-    canActivate:[AuthGuard]
-  },
-  {
-    path:'register',
-    component:RegisterComponent,
     pathMatch:'full'
   },
   {
@@ -47,11 +38,6 @@ const routes: Routes = [
   {
     path:'usermanagement',
     component:UsermanagementComponent,
-    pathMatch:'full'
-  },
-  {
-    path:'product-list',
-    component:ProductListComponent,
     pathMatch:'full'
   },
   {

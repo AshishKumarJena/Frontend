@@ -1,77 +1,52 @@
-<div class="bootstrap-wrapper">
-  <div class="container mt">
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <div class="container text-center">
-          <img
-            class="img-fluid"
-            style="width: 100px"
-            src="/assets/logo.png"
-            alt=""
-          />
-        </div>
-        <h1 class="text-center">Please fill in this form to create an account.</h1>
-
-        <!-- creating form-->
-        <form (ngSubmit)="onSubmit()">
-          <mat-form-field class="full-width">
-            <input
-              [(ngModel)]="user.name"
-              matInput
-              placeholder="Username"
-              type="email"
-              name="email"
-              required
-            />
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input
-              [(ngModel)]="user.password"
-              matInput
-              placeholder="Password"
-              type="password"
-              name="password"
-              required
-            />
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input
-              [(ngModel)]="user.mailId"
-              matInput
-              placeholder="Email"
-              type="text"
-              name="mailId"
-              required
-            />
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input
-              [(ngModel)]="user.mobile"
-              matInput
-              placeholder="Mobile Number"
-              type="text"
-              name="mobNo"
-              required
-            />
-          </mat-form-field>
-          <mat-form-field class="full-width">
-            <input
-              [(ngModel)]="user.regDate"
-              matInput
-              placeholder="Date"
-              type="date"
-              name="date"
-              required
-            />
-          </mat-form-field>
-          <div class="container text-center">
-            <button type="submit" mat-raised-button color="primary">
-              Register
-            </button>
-          </div>
+<div class="col-md-12">
+    <div class="card card-container">
+        <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
+        <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+                    minlength="3" maxlength="20" #username="ngModel" />
+                <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                    <div *ngIf="username.errors['required']">Username is required</div>
+                    <div *ngIf="username.errors['minlength']">
+                        Username must be at least 3 characters
+                    </div>
+                    <div *ngIf="username.errors['maxlength']">
+                        Username must be at most 20 characters
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email
+                    #email="ngModel" />
+                <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                    <div *ngIf="email.errors['required']">Email is required</div>
+                    <div *ngIf="email.errors['email']">
+                        Email must be a valid email address
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password" [(ngModel)]="form.password" required
+                    minlength="6" #password="ngModel" />
+                <div class="alert-danger" *ngIf="password.errors && f.submitted">
+                    <div *ngIf="password.errors['required']">Password is required</div>
+                    <div *ngIf="password.errors['minlength']">
+                        Password must be at least 6 characters
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">Sign Up</button>
+            </div>
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                Signup failed!<br />{{ errorMessage }}
+            </div>
         </form>
-        <br>
-      </div>
+        <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successful!
+        </div>
     </div>
-  </div>
 </div>

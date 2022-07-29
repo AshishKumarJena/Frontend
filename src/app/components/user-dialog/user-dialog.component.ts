@@ -4,18 +4,18 @@ import { UsermanagementService } from 'src/app/services/usermanagement.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  selector: 'user-dialog-user',
+  templateUrl: './user-dialog.component.html',
+  styleUrls: ['./user-dialog.component.css']
 })
-export class AddUserComponent implements OnInit {
+export class UserDialogComponent implements OnInit {
   
   userForm !: FormGroup;
   actionBtn : string = 'Save'
   constructor(private formBuilder: FormBuilder, 
     private api: UsermanagementService, 
     @Inject(MAT_DIALOG_DATA) public editUser: any, 
-    private dialogRef : MatDialogRef<AddUserComponent>) { }
+    private dialogRef : MatDialogRef<UserDialogComponent>) { }
 
   ngOnInit(): void {
       this.userForm = this.formBuilder.group({
@@ -49,6 +49,7 @@ export class AddUserComponent implements OnInit {
           alert("User added successfully")
           this.userForm.reset();
           this.dialogRef.close('Save');
+          window.location.reload();
         },
         error:()=>{
           alert("Error while adding the user")
@@ -66,6 +67,7 @@ export class AddUserComponent implements OnInit {
         alert("User updated successfully")
         this.userForm.reset();
         this.dialogRef.close('Update');
+        window.location.reload();
       },
       error:()=>{
         alert("Error while updating the record")

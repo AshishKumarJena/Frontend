@@ -14,22 +14,17 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { RegisterComponent } from './components/register/register.component';
-import { AppUserListComponent } from './components/app-user-list/app-user-list.component';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { AuthGuard } from 'src/app/services/auth.guard';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductmanagementComponent } from './components/productmanagement/productmanagement.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ServicebookComponent } from './components/servicebook/servicebook.component';
 import { UsermanagementComponent } from './components/usermanagement/usermanagement.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
 import {MatDialogModule} from '@angular/material/dialog';
-import { DialogComponent } from './components/dialog/dialog.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
-import { AddUserComponent } from './components/add-user/add-user.component';
+import { UserDialogComponent } from './components/user-dialog/user-dialog.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
@@ -40,6 +35,9 @@ import { ServiceBookingDialogComponent } from './components/service-booking-dial
 import { ServiceReportComponent } from './components/service-report/service-report.component';
 import { ServiceReportDialogComponent } from './components/service-report-dialog/service-report-dialog.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
+import { RegisterComponent } from './components/register/register.component';
+import { ProductDialogComponent } from './components/product-dialog/product-dialog.component';
 
 
 
@@ -52,19 +50,17 @@ import {MatSelectModule} from '@angular/material/select';
     HomeComponent,
     LoginComponent,
     DashboardComponent,
-    RegisterComponent,
-    AppUserListComponent,
     ProductmanagementComponent,
     ProfileComponent,
     ServicebookComponent,
     UsermanagementComponent,
-    ProductListComponent,
-    DialogComponent,
-    AddUserComponent,
+    UserDialogComponent,
     ServiceBookingComponent,
     ServiceBookingDialogComponent,
     ServiceReportComponent,
     ServiceReportDialogComponent,
+    RegisterComponent,
+    ProductDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -88,10 +84,12 @@ import {MatSelectModule} from '@angular/material/select';
     MatPaginatorModule,
     MatSortModule,
     RouterModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCardModule
+    
     //RouterModule.forRoot(appRoutes)
   ],
-  providers: [AuthenticationService, AuthGuard],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

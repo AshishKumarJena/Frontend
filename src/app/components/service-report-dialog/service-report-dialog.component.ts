@@ -57,6 +57,7 @@ export class ServiceReportDialogComponent implements OnInit {
           alert("Service Report added successfully")
           this.serviceReportForm.reset();
           this.dialogRef.close('Save');
+          window.location.reload();
         },
         error:()=>{
           alert("Error while adding the service report")
@@ -74,7 +75,8 @@ export class ServiceReportDialogComponent implements OnInit {
         next:(res) => {
           alert("Service Report updated successfully")
           this.serviceReportForm.reset();
-          this.dialogRef.close('Save');
+          this.dialogRef.close('Update');
+          window.location.reload();
         },
         error:()=>{
           alert("Error while updating the service report")

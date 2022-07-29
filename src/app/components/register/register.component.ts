@@ -1,36 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppUser } from 'src/app/app-user';
-import { ListUserService } from 'src/app/services/list-user.service';
-
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
- user: AppUser = new AppUser()
-  constructor(private listuser:ListUserService,private router:Router) { }
-
-
-  ngOnInit(): void {
+  form: any = {
+    username: null,
+    email: null,
+    password: null,
+  };
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessage = '';
+  constructor(private authService: AuthService) {}
+  ngOnInit(): void {}
+  onSubmit(): void {
+    const { username, email, password } = this.form;
+    this.authService.register(username, email, password).subscribe(
+      (data) => {
+        console.log(data);
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+      },
+      (err) => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
-
-  saveUser(){
- this.listuser.registerUser(this.user).subscribe(data=>{
-  console.log(data);
-  this.goToUserList();
- },
- error=>console.log(error));
-  }
-  
-goToUserList(){
- this.router.navigate(['/usermanagement']);
-}
-  onSubmit(){
-    console.log(this.user);
-    this.saveUser();
-  }
-
 }
