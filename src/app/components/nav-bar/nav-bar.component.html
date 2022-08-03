@@ -2,10 +2,10 @@
   <span>
     <mat-icon *ngIf="loggedIn">eco</mat-icon>
     <a mat-button routerLink="/dashboard" *ngIf="loggedIn"
-      >Service Booking System</a
+      >Service Booking Management</a
     >
     <mat-icon *ngIf="!loggedIn">eco</mat-icon>
-    <a mat-button routerLink="/" *ngIf="!loggedIn">Service Booking System</a>
+    <a mat-button routerLink="/" *ngIf="!loggedIn">Service Booking Management</a>
   </span>
   <div class="example-spacer"></div>
   <button mat-button *ngIf="loggedIn" [matMenuTriggerFor]="belowUser">

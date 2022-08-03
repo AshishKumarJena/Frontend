@@ -6,7 +6,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ProductmanagementService } from 'src/app/services/productmanagement.service';
 import { ProductDialogComponent } from '../product-dialog/product-dialog.component';
-
 @Component({
   selector: 'app-productmanagement',
   templateUrl: './productmanagement.component.html',
@@ -21,7 +20,9 @@ export class ProductmanagementComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private dialog:MatDialog, private router:Router, private api : ProductmanagementService ) { }
+  constructor(private dialog:MatDialog, 
+    private router:Router, 
+    private api : ProductmanagementService) { }
 
   ngOnInit(): void {
     this.getAllProducts();

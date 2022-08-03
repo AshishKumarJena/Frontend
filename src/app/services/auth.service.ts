@@ -39,6 +39,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { URLs } from 'src/app/_shared/urls';
+import { TokenStorageService } from './token-storage.service';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -50,7 +52,9 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private tokenStorage: TokenStorageService,
+    private router: Router) {}
 
   login(name:String,pass:String): Observable<any> {
     return this.http.post(
@@ -71,5 +75,15 @@ export class AuthService {
       },
       httpOptions
     );
+  }
+
+  createHeader(){
+    let token = this.tokenStorage.getToken();
+    if(token!==null){
+      var header=new HttpHeaders({Authorization:token})
+      return header
+    }
+    this.router.navigate(['productmanagement'])
+    return 
   }
 }
